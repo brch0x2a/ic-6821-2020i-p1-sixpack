@@ -18,11 +18,11 @@ public class RequestProcessorImpl implements RequestProcessor{
     @Override
     public void process(Request request, Response response) {
 
-        MIME mime = new MIMEImpl();
-        String mimeType = mime.getMIME(request.getURL());
+        MIME mime = new MIME.getInstance();
+        String mimeType = mime.getMIME(request.getUrl());
         response.setContentType(mimeType);
 
-        MethodProcessor methodProcessor = new FactoryMethodMethodProcessor().create(request, response);
+        MethodProcessor methodProcessor = new FactoryMethodMethodProcessor().getInstance().create(request, response);
 
 
     }
