@@ -2,16 +2,16 @@ import java.net.*;
 import java.io.*;
 
 /**
- * This class is in charge to create de Thread to attend the request.
+ * This class represents a Thread to attend the request.
  * The constructor receives a socket and a RequestProcessorImpl instance.
  * This class creates a instance for Request using the InputStream for the
  * socket and an empty Response,
  */
 public class RequestProcessorThread extends Thread{
     private Socket socket = null;
-    private RequestProcessorImpl requestProcessor;
+    private RequestProcessor requestProcessor;
 
-    RequestProcessorThread(Socket socket, RequestProcessorImpl requestProcessor){
+    RequestProcessorThread(Socket socket, RequestProcessor requestProcessor){
         this.socket = socket;
         this.requestProcessor = requestProcessor;
 
@@ -35,7 +35,7 @@ public class RequestProcessorThread extends Thread{
 
             requestProcessor.process(request, response);
 
-            Log log = new ConsoleLog();
+            Log log = new Log.getInstance();
             log.save(request);
             log.save(response);
 
