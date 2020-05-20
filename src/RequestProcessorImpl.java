@@ -22,7 +22,7 @@ public class RequestProcessorImpl implements RequestProcessor{
         String mimeType = mime.getMIME(request.getUrl());
         response.setContentType(mimeType);
 
-        MethodProcessor methodProcessor = FactoryMethodMethodProcessor().getInstance().create(request, response);
+        MethodProcessor methodProcessor = FactoryMethodMethodProcessor.getInstance().create(request, response);
 
 
     }
